@@ -1,0 +1,154 @@
+snippet ebi "Elevated Button Icon" bA
+
+ElevatedButton.icon(
+  onPressed: ${1:()} ${2:{\}},
+  icon: Icon(Icons.${3:arrow_back}, size: ${4:30}),
+  label: Text(
+    '${5:Press ME}',
+    style: TextStyle(fontSize: ${6:30}, fontWeight: FontWeight.${7:bold}),
+  ),
+),$0
+
+endsnippet
+
+snippet `sbh(\d{2})` "Sized Box with height" A
+``
+let hgt = Number(m[1])
+let strg = ''
+
+strg = `SizedBox(height: ${hgt})`
+
+rv = `${strg},`
+``
+endsnippet
+
+snippet `sbw(\d{2})` "Sized Box with width" A
+``
+let wdth = Number(m[1])
+let strg = ''
+
+strg = `SizedBox(height: ${wdth})`
+
+rv = `${strg},`
+``
+endsnippet
+
+snippet `c-(a|c|bk|bl|libl|br|lig|gr|gy|i|r|o|pi|pu|t|y|w)` "Insert color.Colors_ based on input after -" A
+``
+var clr = m[1]   // 'm' is an array of regex capture groups
+var text = ''
+
+switch(clr){
+
+  case "a":
+    text = "color: Colors.amber";
+    break;
+  case "c":
+    text = "color: Colors.cyan";
+    break;
+  case "bk":
+    text = "color: Colors.black";
+    break;
+  case "bl":
+    text = "color: Colors.blue";
+    break;
+  case "libl":
+    text = "color: Colors.lightBlue";
+    break;
+  case "br":
+    text = "color: Colors.brown";
+    break;
+  case "lig":
+    text = "color: Colors.lightGreen";
+    break;
+  case "g":
+    text = "color: Colors.green";
+    break;
+  case "gy":
+    text = "color: Colors.grey";
+    break;
+  case "i":
+    text = "color: Colors.indigo";
+    break;
+  case "r":
+    text = "color: Colors.red";
+    break;
+  case "o":
+    text = "color: Colors.orange";
+    break;
+  case "pi":
+    text = "color: Colors.pink";
+    break;
+  case "pu":
+    text = "color: Colors.purple";
+    break;
+  case "t":
+    text = "color: Colors.teal";
+    break;
+  case "y":
+    text = "color: Colors.yellow";
+    break;
+  case "w":
+    text = "color: Colors.white";
+    break;
+  
+}
+rv = text  // return value     
+
+``
+endsnippet
+
+snippet `fs(\d{2})` "Font size with fs*" A
+``
+let size = Number(m[1])
+let strg = ''
+
+strg = `fontSize: ${size}`
+rv = `${strg},`
+``
+endsnippet
+
+snippet `tff(e|p)` "TextFormField (email, password)" A 
+``
+var fld = m[1] // 'm' is an array of regex capture group
+let s1
+let s2
+let s3
+let s4
+
+switch (fld) {
+  case "e":
+    s1 = "email";
+    s2 = "Email";
+    s3 = "";
+    s4 = "(email) => email != null && !EmailValidator.validate(email)? 'Enter a valid email' : null,";
+    break;
+  case "p":
+    s1 = "password";
+    s2 = "Password";
+    s3 = "obscureText: true,";
+    s4 = "(value) => value != null && value.length < 6 ? 'Password must be at least 6 characters' : null,";
+    break;
+}
+
+``TextFormField(
+  controller: ``rv = s1``Controller,
+  textInputAction: ${1:TextInputAction.next},
+  decoration: const InputDecoration(labelText: '``rv = s2``'),
+  ``rv = s3``
+  autovalidateMode: AutovalidateMode.onUserInteraction,
+  validator: ``rv = s4``
+),$0
+
+
+endsnippet
+
+snippet `pall(\d{2})` "padding:all" A
+``
+let p = Number(m[1])
+let s = ''
+
+s = `padding: EdgeInsets.all(${p})`
+rv = `${s},`
+``
+endsnippet
